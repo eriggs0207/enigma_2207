@@ -4,7 +4,6 @@ class KeyGenerator
     @key = []
   end
 
-
   def randomizer(key)
     if @key.length > 1
       random_key = rand(0..1000)
