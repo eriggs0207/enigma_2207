@@ -14,31 +14,14 @@ RSpec.describe OffsetGenerator do
   end
 
   it 'can create the offset from the date' do
-    expected_hash = {
-                    :a => 1,
-                    :b => 0,
-                    :c => 2,
-                    :d => 5
-    }
-    expect(@offset_generator.date_offset).to eq(expected_hash)
+    expect(@offset_generator.generate_date_offset).to eq([1, 0, 2, 5])
   end
+
   it 'can create the offset from the key' do
-    expected_hash = {
-                    :a => 02,
-                    :b => 27,
-                    :c => 71,
-                    :d => 15
-    }
-    expect(@offset_generator.key_offset).to eq(expected_hash)
+    expect(@offset_generator.generate_key_offset).to eq([2, 27, 71, 15])
   end
 
   it 'can create the total offset' do
-    expected_hash = {
-                    :a => 03,
-                    :b => 27,
-                    :c => 73,
-                    :d => 20
-    }
-    expect(@offset_generator.total_offset(@offset_generator.key_offset, @offset_generator.date_offset)).to eq(expected_hash)
+    expect(@offset_generator.generate_total_offset).to eq([3, 27, 73, 20])
   end
 end
