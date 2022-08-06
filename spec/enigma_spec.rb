@@ -18,7 +18,7 @@ RSpec.describe Enigma do
     expect(@enigma.character_set).to eq(("a".."z").to_a)
   end
 
-  xit 'can encrypt' do
+  it 'can encrypt' do
     expected_hash = {
                       encryption: "keder ohulw",
                       key: "02715",
