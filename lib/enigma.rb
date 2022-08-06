@@ -12,17 +12,14 @@ class Enigma
 
 
   def encrypt(message, key, date)
-    if key == nil
-      @key == @key_generator.randomizer
-    else
-      return
-    end
-    if date == nil
-      @date == @current_date
-    else
-      return
-    end
+    @key =
+    @date = 
+    shift = @offset_generator.total_offset(@key.key_offset, @date.date_offset)
+    encryption = ""
+    message.split("").each do |letter|
+      if @character_set.include?(letter)
+      end
 
-
+    end
   end
 end

@@ -15,9 +15,10 @@ RSpec.describe Enigma do
     expect(@enigma.message).to eq("hello world")
     expect(@enigma.key).to eq("02715")
     expect(@enigma.date).to eq("040895")
+    expect(@enigma.character_set).to eq(("a".."z").to_a)
   end
 
-  it 'can encrypt' do
+  xit 'can encrypt' do
     expected_hash = {
                       encryption: "keder ohulw",
                       key: "02715",

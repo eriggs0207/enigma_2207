@@ -10,9 +10,7 @@ RSpec.describe KeyGenerator do
     # expect(@key_generator.key).to eq()
   end
 
-  xit 'can generate a key randomly' do
-    fake_data = "12345"
-    allow(KeyGenerator).to receive(:key).and_return(fake_data)
-    expect(@key_generator.randomizer).to eq("12345")
+  it 'can generate a key randomly' do
+    expect(@key_generator.randomizer.to_i).to be_between(0, 99999)
   end
 end

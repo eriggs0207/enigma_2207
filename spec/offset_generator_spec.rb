@@ -39,6 +39,6 @@ RSpec.describe OffsetGenerator do
                     :c => 73,
                     :d => 20
     }
-    expect(@offset_generator.total_offset).to eq(expected_hash)
+    expect(@offset_generator.total_offset(@offset_generator.key_offset, @offset_generator.date_offset)).to eq(expected_hash)
   end
 end

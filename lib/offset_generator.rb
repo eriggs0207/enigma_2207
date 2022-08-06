@@ -29,7 +29,7 @@ class OffsetGenerator
     key_sets
   end
 
-  def total_offset
+  def total_offset(key_offset, date_offset)
     total = Hash.new(0)
     total[:a] = (key_offset[:a] + date_offset[:a])
     total[:b] = (key_offset[:b] + date_offset[:b])
