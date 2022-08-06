@@ -1,14 +1,22 @@
 class Enigma
   def initialize
     @character_set = ("a".."z").to_a
-
+    @key = key
+    @date = date
   end
 
 
   def encrypt(message, key, date)
-    cipher_hash = Hash.new(0)
-    cipher_hash[:encryption] = message
-    cipher_hash[:key] = key
-    cipher_hash[:date] = date
+    if key = nil
+      @key = @key_generator.randomizer
+    else
+      return
+    end
+    if date = nil
+      @date = @current_date
+    else
+      return 
+    end
+
   end
 end
