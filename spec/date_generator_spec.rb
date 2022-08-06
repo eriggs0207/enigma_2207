@@ -15,4 +15,3 @@ RSpec.describe DateGenerator do
     expect(@date_generator.date).to eq(@current_date)
   end
 end
-# allow(Date).to receive(:today).and_return Date.new(current_date)
