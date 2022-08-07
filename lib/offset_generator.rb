@@ -9,7 +9,7 @@ class OffsetGenerator
     @date = date
     @date_offset = []
     @key_offset = []
-    @total_offset = []
+    @shift = []
   end
 
   def generate_date_offset
@@ -30,8 +30,10 @@ class OffsetGenerator
     @key_offset = [a, b, c, d]
   end
 
-  def generate_total_offset
+  def generate_shift
     total = @key_offset.zip(@date_offset)
-    @total_offset = total
+    total.map do |key|
+    @shift = key.sum
+    end
   end
 end
