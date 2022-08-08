@@ -3,7 +3,7 @@ class OffsetGenerator
               :date,
               :date_offset,
               :key_offset,
-              :total_offset
+              :shift
   def initialize(key, date)
     @key = key
     @date = date
