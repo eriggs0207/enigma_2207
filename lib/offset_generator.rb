@@ -3,7 +3,7 @@ class OffsetGenerator
               :date,
               :date_offset,
               :key_offset,
-              :shift 
+              :total_offset
   def initialize(key, date)
     @key = key
     @date = date
@@ -27,10 +27,10 @@ class OffsetGenerator
     @key_offset = [a, b, c, d]
   end
 
-  def generate_shift
+  def generate_total_offset
     total = @key_offset.zip(@date_offset)
     total.map do |key|
-    @shift = key.sum
+    @total_offset = key.sum
     end
   end
 end

@@ -16,4 +16,4 @@ encrypted = enigma.encrypt(message, key, date)
 
 encrypt = File.open(ARGV[1], "w").write(encrypted[:encryption])
 
-puts "Created 'encrypt.txt'\n with the key #{key}\n and the date #{date}"
+puts "Created #{encrypt}\n with the key #{key}\n and the date #{date}"
