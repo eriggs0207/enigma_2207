@@ -40,7 +40,7 @@ class Enigma
     calculate_total_offset(key, date)
     decrypted_hash = Hash.new(0)
     decryption = []
-        message.chars.each.with_index do |letter,index|
+      message.chars.each.with_index do |letter,index|
         new_offset = @char_set.find_index(letter) - @total_offset[index % 4]
         decryption << @char_set[new_offset % 27]
       decrypted_hash[:decryption] = decryption.join
