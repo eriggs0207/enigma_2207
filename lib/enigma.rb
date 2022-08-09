@@ -10,7 +10,6 @@ class Enigma
     @date = date
     @character_set = ("a".."z").to_a << " "
     @shift = shift
-    # @cipher_text = cipher_text
   end
 
   def calculate_shift(key, date)
@@ -23,7 +22,7 @@ class Enigma
     @shift = offset.generate_shift
   end
 
-  def encrypt(message, key = KeyGenerator.new.randomizer, date = DateTime.now.strftime("%m%d%y"))
+  def encrypt(message, key, date)
     calculate_shift(key, date)
     encrypted_hash = Hash.new(0)
     encryption = []
