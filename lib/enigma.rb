@@ -10,6 +10,7 @@ class Enigma
     @date = date
     @character_set = ("a".."z").to_a << " "
     @shift = shift
+    # @cipher_text = cipher_text
   end
 
   def calculate_shift(key, date)
@@ -23,28 +24,20 @@ class Enigma
   end
 
 
-
-
-
   def encrypt(message, key = KeyGenerator.new.randomizer, date = DateTime.now.strftime("%m%d%y"))
     calculate_shift(key, date)
     encrypted_hash = Hash.new(0)
     encryption = []
         message.chars.each.with_index do |letter,index|
-          if index %4 == 0
-            encryption << @character_set.rotate(@shift[0])[0]
-          elsif index %4 == 1
-            encryption << @character_set.rotate(@shift[1])[1]
-          elsif index %4 == 2
-            encryption << @character_set.rotate(@shift[2])[2]
-          else
-            encryption << @character_set.rotate(@shift[3])[3]
-          end
-          # require 'pry'; binding.pry
 
 
 
-      encrypted_hash[:encryption] = encryption
+
+            c = @character_set.find_index(letter) + @shift[index % 4]
+
+            encryption << @character_set[c % 27]
+
+      encrypted_hash[:encryption] = encryption.join
       encrypted_hash[:key] = key
       encrypted_hash[:date] = date
 
@@ -52,4 +45,5 @@ class Enigma
     end
     encrypted_hash
   end
+
 end
