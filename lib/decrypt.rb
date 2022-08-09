@@ -13,4 +13,4 @@ decrypted = enigma.decrypt(message, key, date)
 
 decrypt = File.open(ARGV[1], "w").write(decrypted[:decryption])
 
-puts "Created 'decrypt.txt'\n with the key #{key}\n and the date #{date}"
+puts "Created decryption: #{decrypted[:decryption]}\n with the key: #{key}\n and the date: #{date}"
