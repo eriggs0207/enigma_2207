@@ -26,7 +26,8 @@ class Enigma
     calculate_shift(key, date)
     encrypted_hash = Hash.new(0)
     encryption = []
-        message.chomp.chars.each.with_index do |letter,index|
+      altered_message = message.downcase.chomp
+        altered_message.chars.each.with_index do |letter,index|
           new_shift = @character_set.find_index(letter) + @shift[index % 4]
           encryption << @character_set[new_shift % 27]
       encrypted_hash[:encryption] = encryption.join
