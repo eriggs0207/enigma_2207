@@ -15,13 +15,13 @@ RSpec.describe Enigma do
     expect(@enigma.message).to eq("hello world")
     expect(@enigma.key).to eq("02715")
     expect(@enigma.date).to eq("040895")
-    expect(@enigma.character_set).to eq(("a".."z").to_a << " ")
+    expect(@enigma.char_set).to eq(("a".."z").to_a << " ")
   end
 
   it 'can calculate_shift' do
     offset = OffsetGenerator.new("02715", "040895")
-    @enigma.calculate_shift("02715", "040895")
-    expect(@enigma.shift).to eq([3, 27, 73, 20])
+    @enigma.calculate_total_offset("02715", "040895")
+    expect(@enigma.total_offset).to eq([3, 27, 73, 20])
   end
 
   it 'can encrypt' do

@@ -2,33 +2,33 @@ class Enigma
   attr_reader :message,
               :key,
               :date,
-              :character_set,
-              :shift
+              :char_set,
+              :total_offset
   def initialize(message, key, date)
     @message = message
     @key = key
     @date = date
-    @character_set = ("a".."z").to_a << " "
-    @shift = shift
+    @char_set = ("a".."z").to_a << " "
+    @total_offset = total_offset
   end
 
-  def calculate_shift(key, date)
+  def calculate_total_offset(key, date)
     offset = OffsetGenerator.new(key, date)
     offset.generate_key_offset
     offset.generate_date_offset
-    offset.generate_shift
     @key = offset.key
     @date = offset.date
-    @shift = offset.generate_shift
+    @total_offset = offset.generate_total_offset
   end
 
   def encrypt(message, key, date)
-    calculate_shift(key, date)
+    calculate_total_offset(key, date)
     encrypted_hash = Hash.new(0)
     encryption = []
-        message.chomp.chars.each.with_index do |letter,index|
-          new_shift = @character_set.find_index(letter) + @shift[index % 4]
-          encryption << @character_set[new_shift % 27]
+      altered_message = message.downcase.chomp
+        altered_message.chars.each.with_index do |letter,index|
+          new_offset = @char_set.find_index(letter) + @total_offset[index % 4]
+          encryption << @char_set[new_offset % 27]
       encrypted_hash[:encryption] = encryption.join
       encrypted_hash[:key] = key
       encrypted_hash[:date] = date
@@ -37,12 +37,12 @@ class Enigma
   end
 
   def decrypt(message, key, date)
-    calculate_shift(key, date)
+    calculate_total_offset(key, date)
     decrypted_hash = Hash.new(0)
     decryption = []
-        message.chomp.chars.each.with_index do |letter,index|
-        new_shift = @character_set.find_index(letter) - @shift[index % 4]
-        decryption << @character_set[new_shift % 27]
+      message.chars.each.with_index do |letter,index|
+        new_offset = @char_set.find_index(letter) - @total_offset[index % 4]
+        decryption << @char_set[new_offset % 27]
       decrypted_hash[:decryption] = decryption.join
       decrypted_hash[:key] = key
       decrypted_hash[:date] = date

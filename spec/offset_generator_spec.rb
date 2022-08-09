@@ -24,6 +24,6 @@ RSpec.describe OffsetGenerator do
   it 'can create the total offset' do
     @offset_generator.generate_key_offset
     @offset_generator.generate_date_offset
-    expect(@offset_generator.generate_shift).to eq([3, 27, 73, 20])
+    expect(@offset_generator.generate_total_offset).to eq([3, 27, 73, 20])
   end
 end

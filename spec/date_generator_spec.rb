@@ -12,6 +12,7 @@ RSpec.describe DateGenerator do
   end
 
   it 'generates the current date' do
-    expect(@date_generator.date).to eq(@current_date)
+    allow(@date_generator).to receive(:date).and_return(Date.parse("2022-8-09").strftime("%m%d%y"))
+    expect(@date_generator.date).to eq("080922")
   end
 end
