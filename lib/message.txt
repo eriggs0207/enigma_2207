@@ -1,1 +1,1 @@
-ARGV == ["hello world" , "02715" , "040895"]
+hello world

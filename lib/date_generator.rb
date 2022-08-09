@@ -1,3 +1,5 @@
+require 'date'
+
 class DateGenerator
   attr_reader :date
   def initialize(date = DateTime.now.strftime("%m%d%y"))
