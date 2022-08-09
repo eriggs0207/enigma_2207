@@ -41,7 +41,7 @@ class Enigma
     calculate_shift(key, date)
     decrypted_hash = Hash.new(0)
     decryption = []
-        message.chomp.chars.each.with_index do |letter,index|
+        message.chars.each.with_index do |letter,index|
         new_shift = @character_set.find_index(letter) - @shift[index % 4]
         decryption << @character_set[new_shift % 27]
       decrypted_hash[:decryption] = decryption.join
