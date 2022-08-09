@@ -3,7 +3,7 @@ require './lib/key_generator'
 require './lib/date_generator'
 require './lib/offset_generator'
 
-message = File.open(ARGV[0],"r")
+message = File.open("./lib/message.txt","r")
 key =  ARGV[1]
 date = ARGV[2]
 

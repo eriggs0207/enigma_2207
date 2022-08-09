@@ -27,43 +27,26 @@ class Enigma
     encrypted_hash = Hash.new(0)
     encryption = []
         message.chars.each.with_index do |letter,index|
-
-
-
-
-            c = @character_set.find_index(letter) + @shift[index % 4]
-
-            encryption << @character_set[c % 27]
-
+          new_shift = @character_set.find_index(letter) + @shift[index % 4]
+          encryption << @character_set[new_shift % 27]
       encrypted_hash[:encryption] = encryption.join
       encrypted_hash[:key] = key
       encrypted_hash[:date] = date
-
-
     end
     encrypted_hash
   end
 
   def decrypt(message, key = KeyGenerator.new.randomizer, date = DateTime.now.strftime("%m%d%y"))
     calculate_shift(key, date)
-    encrypted_hash = Hash.new(0)
-    encryption = []
+    decrypted_hash = Hash.new(0)
+    decryption = []
         message.chars.each.with_index do |letter,index|
-
-
-
-
-            c = @character_set.find_index(letter) - @shift[index % 4]
-
-            encryption << @character_set[c % 27]
-
-      encrypted_hash[:decryption] = encryption.join
-      encrypted_hash[:key] = key
-      encrypted_hash[:date] = date
-
-
+        new_shift = @character_set.find_index(letter) - @shift[index % 4]
+        decryption << @character_set[new_shift % 27]
+      decrypted_hash[:decryption] = decryption.join
+      decrypted_hash[:key] = key
+      decrypted_hash[:date] = date
     end
-    encrypted_hash
+    decrypted_hash
   end
-
 end
