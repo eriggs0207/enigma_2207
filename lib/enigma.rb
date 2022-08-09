@@ -16,7 +16,6 @@ class Enigma
     offset = OffsetGenerator.new(key, date)
     offset.generate_key_offset
     offset.generate_date_offset
-    offset.generate_total_offset
     @key = offset.key
     @date = offset.date
     @total_offset = offset.generate_total_offset
@@ -28,8 +27,8 @@ class Enigma
     encryption = []
       altered_message = message.downcase.chomp
         altered_message.chars.each.with_index do |letter,index|
-          new_shift = @char_set.find_index(letter) + @total_offset[index % 4]
-          encryption << @char_set[new_shift % 27]
+          new_offset = @char_set.find_index(letter) + @total_offset[index % 4]
+          encryption << @char_set[new_offset % 27]
       encrypted_hash[:encryption] = encryption.join
       encrypted_hash[:key] = key
       encrypted_hash[:date] = date
@@ -42,8 +41,8 @@ class Enigma
     decrypted_hash = Hash.new(0)
     decryption = []
         message.chars.each.with_index do |letter,index|
-        new_shift = @char_set.find_index(letter) - @total_offset[index % 4]
-        decryption << @char_set[new_shift % 27]
+        new_offset = @char_set.find_index(letter) - @total_offset[index % 4]
+        decryption << @char_set[new_offset % 27]
       decrypted_hash[:decryption] = decryption.join
       decrypted_hash[:key] = key
       decrypted_hash[:date] = date
