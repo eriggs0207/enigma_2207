@@ -1,7 +1,7 @@
 require 'date'
 require './lib/enigma'
 require './lib/key_generator'
-# require './lib/date_generator'
+require './lib/date_generator'
 require './lib/offset_generator'
 require './spec/spec_helper'
 
